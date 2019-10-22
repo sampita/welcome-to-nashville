@@ -15,3 +15,8 @@
         // <!-- concerts search  -->
         // <input type="text" placeholder="concerts by genre">
         // <button>Search</button>
+
+
+// getEventbriteData();
+// searchFormEventbrite();
+buildSearchForm();
