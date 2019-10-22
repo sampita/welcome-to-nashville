@@ -21,7 +21,7 @@ const buildSearchForm = () => {
     <input type="text" placeholder="meetups by topic">
     <button id="meetupsSearchButton">Search</button>
     
-    <input type="text" placeholder="concerts by genre" id="concertsInput">
+    <input type="text" placeholder="concerts by genre" id="concerts-input">
     <button id="concertsSearchButton">Search</button>
     `
     // Gets reference to Search container in the index.html file and prints the above HTML code to the DOM.
