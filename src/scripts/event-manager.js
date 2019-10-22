@@ -6,8 +6,9 @@ const myfunction = () => {
 }
 
 const attachSearchEvent = () => {
-    const concertSearchButton = document.querySelector("#concertsSearchButton")
-    concertSearchButton.addEventListener("click", myfunction)
+    const concertsSearchButton = document.querySelector("#concertsSearchButton")
+    console.log(concertsSearchButton)
+    concertsSearchButton.addEventListener("click", searchFormTicketmaster)
 
     const parksSearchButton = document.querySelector("#parksSearchButton")
     parksSearchButton.addEventListener("click", myfunction)

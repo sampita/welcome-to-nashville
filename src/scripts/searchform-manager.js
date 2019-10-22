@@ -1,5 +1,13 @@
 // Purpose: This file populates the Search section of the index.html page.
 
+//function for search button event listener
+//grabs the search input
+const searchFormTicketmaster = () => {
+    const searchInput = document.querySelector("#concerts-input").value
+    getTicketmasterData(searchInput)
+    .then(parsedConcerts => console.log(parsedConcerts))
+}  
+
 
 // This function builds the search form and prints it to the DOM
 const buildSearchForm = () => {

@@ -1,3 +1,4 @@
+// Purpose: This file populates the Results section of the index.html page
 // This function will append search results to DOM.
 const resultsFunction = () => {
     // Creates variable to be called and appended to index element with class of resultsContainer.
