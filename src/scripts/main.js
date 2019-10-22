@@ -6,4 +6,4 @@ buildSearchForm();
 
 attachSearchEvent();
 
-searchTicketmaster();
+searchFormTicketmaster();
