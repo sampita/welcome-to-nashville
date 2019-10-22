@@ -1,13 +1,14 @@
+// Purpose: this file holds the functions for general DOM rendering (page title, results header)
+
+// create main page header
 const renderPageTitle = () => {
-    // TODO: write factory function to create main page header and then call this function in main.js
-    // TODO: get container element
+    // get empty container element
     let container = document.querySelector("#welcome-title")
-    console.log(container)
-    // TODO: create HTML element
+    // create HTML element div
     let headerEl = document.createElement("h1");
+    // element attributes
     headerEl.id = "title";
     headerEl.innerText = "Welcome to Nashville!"
-    console.log(headerEl);
+    // write HTML to dom
     container.appendChild(headerEl)
-    // TODO: write HTML to dom
 }
