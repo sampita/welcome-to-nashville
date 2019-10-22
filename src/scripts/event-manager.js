@@ -1,2 +1,2 @@
-// Purpose: This file handles event listeners
+// Purpose: This file handles event listeners.
 

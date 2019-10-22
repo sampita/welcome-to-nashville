@@ -1,5 +1,6 @@
 // Purpose: This file is where the main execution occurs.
 
+buildSearchForm();
 
 // Search HTML
         // <!-- parks search  -->
