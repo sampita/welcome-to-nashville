@@ -4,3 +4,5 @@
 buildSearchForm();
 
 attachSearchEvent();
+
+concertSearch();
