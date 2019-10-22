@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 createItineraryContainer();
 
 
@@ -16,11 +15,9 @@ createItineraryContainer();
         // <!-- concerts search  -->
         // <input type="text" placeholder="concerts by genre">
         // <button>Search</button>
-=======
 // Purpose: This file is where the main execution occurs.
 // TODO: Render the Welcome to Nashville Header 
 renderPageTitle();
 buildSearchForm();
 
 attachSearchEvent();
->>>>>>> master
