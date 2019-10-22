@@ -21,3 +21,4 @@ renderPageTitle();
 buildSearchForm();
 
 attachSearchEvent();
+resultsFunction();
