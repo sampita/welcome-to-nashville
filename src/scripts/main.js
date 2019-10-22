@@ -1,4 +1,4 @@
-
+createItineraryContainer();
 
 
 // Search HTML
