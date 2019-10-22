@@ -1,5 +1,6 @@
-// This function will append search results to DOM
+// This function will append search results to DOM.
 const resultsFunction = () => {
+    // Creates variable to be called and appended to index element with class of resultsContainer.
     const searchResults = `
     <div class="card" style="width: 18rem;">
     <div class="card-header">
@@ -11,8 +12,7 @@ const resultsFunction = () => {
       <li class="list-group-item">Vestibulum at eros</li>
     </ul>
   </div>`
-
-  const resultsContainer = document.querySelector(".resultsContainer")
-  resultsContainer.innerHtml = searchResults
-
+    // States variable to query select and eventually appends searchResults innerHTML into  
+    const resultsContainer = document.querySelector(".resultsContainer")
+    resultsContainer.innerHTML = searchResults
 }

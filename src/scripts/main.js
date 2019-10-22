@@ -4,3 +4,5 @@ renderPageTitle();
 buildSearchForm();
 
 attachSearchEvent();
+
+resultsFunction();
