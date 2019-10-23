@@ -5,8 +5,8 @@
 const searchFormTicketmaster = () => {
     const searchInput = document.querySelector("#concerts-input").value
     getTicketmasterData(searchInput)
-    .then(parsedConcerts => console.log(parsedConcerts))
-}  
+        .then(parsedConcerts => console.log(parsedConcerts))
+}
 
 
 // This function builds the search form and prints it to the DOM
@@ -36,22 +36,30 @@ const searchFormEventbrite = () => {
     console.log(`Eventually will search for "${searchString}"`); // remove when done testing
     if (searchString) {
         getEventbriteData(searchString)
-        .then(({events}) => {
-            // console.log({events}.events)
-            events.forEach(event => {
-                // console.log(event.name, event.description);
-                // console.log(event.start)
-                // console.log(event.venue.name)
-                // console.log(event.venue.address) // returns object
-                const eventEl = createEventbriteHtml(event)
-                console.log(eventEl)
-                renderEventbrite(eventEl)
+            .then(({ events }) => {
+                // console.log({events}.events)
+                events.forEach(event => {
+                    // console.log(event.name, event.description);
+                    // console.log(event.start)
+                    // console.log(event.venue.name)
+                    // console.log(event.venue.address) // returns object
+                    const eventEl = createEventbriteHtml(event)
+                    console.log(eventEl)
+                    renderEventbrite(eventEl)
+                })
             })
-        })
     }
 }
 
-const getZomatoDate = (searchString) => {
-    return fetch(`https://developers.zomato.com/api/v2.1/search?entity_id=1138&entity_type=city&q=${searchKeyWord}&count=100`)
-    .then(restaurants => restaurants.json())
+const searchFormZomato = () => {
+    let searchString = document.querySelector("#restaurant-input").value;
+    if (searchString) {
+        getZomatoData(searchString)
+            .then(({ events }) => {
+                events.foreach(event => {
+                    const eventEl = createZomatoHtml(event)
+                    renderZomato(eventEl)
+                })
+            })
+    }
 }

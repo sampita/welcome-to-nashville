@@ -8,6 +8,6 @@ attachSearchEvent();
 
 searchFormTicketmaster();
 
-resultsFunction();
+renderResultsContainer();
 
 createItineraryContainer();
