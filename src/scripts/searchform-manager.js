@@ -60,6 +60,21 @@ const searchFormEventbrite = () => {
 }
 }
 
+const searchFormParks = () => {
+    let searchString = document.querySelector("#parks-input").value;
+    if (searchString) {
+        getParksData(searchString)
+            .then(( parks ) => {
+                // console.log(parks)
+                parks.forEach(park => {
+                    let parkAddress = park.mapped_location.human_address.split("\"")[3]
+                    console.log(parkAddress)
+                    console.log(park.park_name, park.mapped_location.human_address)
+                })
+            })
+    }
+}
+
 //grabs the search input and queries the Ticketmaster API
 const searchFormTicketmaster = () => {
     const searchString = document.querySelector("#concerts-input").value
