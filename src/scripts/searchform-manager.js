@@ -55,6 +55,7 @@ const searchFormTicketmaster = () => {
     if (searchString) {
         getTicketmasterData(searchString)
             .then(concerts => {
+                //returns name and address of each concert
                 concerts._embedded.events.forEach(concert => {
                     concerts.name = concert.name
                     concerts.address = concert._embedded.venues[0].address.line1
