@@ -18,13 +18,11 @@ const resultsFunction = () => {
     resultsContainer.innerHTML = searchResults
 }
 
-// Add saved item to itinerary container in corresponding category
 const addToItinerary = (name, category) => {
   let categoryField = document.querySelector(`#${category}-itinerary`)
   categoryField.innerText = name
 }
 
-// Grabs the name from the item that was 'save' clicked
 const saveCard = () => {
   // get card Id from event
   let cardId = event.target.id.split("--")[1];
@@ -35,20 +33,18 @@ const saveCard = () => {
   addToItinerary(cardToSave, category)
 }
 
-// Render search result to resultsContainer
 const renderCardToDom = (card) => {
   let cardList = document.querySelector(".list-group")
   cardList.appendChild(card);
 }
 
-// Iterate length of current card list and create new id
+// iterate length of current card list and create new id
 const getNewIdNumber = () => {
   let cardArrayLength = document.getElementsByClassName("list-group-item").length;
   console.log("card array", cardArrayLength);
   return cardArrayLength + 1 // prevent 0-indexed card id list
 }
 
-// Factory function to create elements of search results
 const createCardContainer = (name, location, category) => {
   // console.log("name", name)
   const cardContainer = document.createElement("li")
