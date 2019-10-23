@@ -51,6 +51,7 @@ const searchFormEventbrite = () => {
                 const address = `${event.venue.address.address_1} ${event.venue.address.address_2}`
                 console.log('name:', name)
                 console.log('address:', address)
+                // create new search result card
                 const eventEl = createCardContainer(name, address, "meetup")
                 // console.log("eventEl", eventEl)
                 renderCardToDom(eventEl)
