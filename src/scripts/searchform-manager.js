@@ -1,17 +1,15 @@
 // Purpose: This file populates the Search section of the index.html page.
 
 //function for search button event listener
-//grabs the search input
-const searchFormTicketmaster = () => {
-    const searchInput = document.querySelector("#concerts-input").value
-    getTicketmasterData(searchInput)
-    .then(parsedConcerts => console.log(parsedConcerts))
-}  
 
 
 // This function builds the search form and prints it to the DOM
 const buildSearchForm = () => {
     const searchForm = `
+    <h3 class="search-header">
+        Search for Things to Do in Nashville
+    </h3>
+
     <input id="parks-input" type="text" placeholder="parks by feature">
     <button id="parksSearchButton">Search</button>
     
@@ -36,17 +34,33 @@ const searchFormEventbrite = () => {
     console.log(`Eventually will search for "${searchString}"`); // remove when done testing
     if (searchString) {
         getEventbriteData(searchString)
-        .then(({events}) => {
-            // console.log({events}.events)
-            events.forEach(event => {
-                // console.log(event.name, event.description);
-                // console.log(event.start)
-                // console.log(event.venue.name)
-                // console.log(event.venue.address) // returns object
-                const eventEl = createEventbriteHtml(event)
-                console.log(eventEl)
-                renderEventbrite(eventEl)
+            .then(({ events }) => {
+                // console.log({events}.events)
+                events.forEach(event => {
+                    // console.log(event.name, event.description);
+                    // console.log(event.start)
+                    // console.log(event.venue.name)
+                    // console.log(event.venue.address) // returns object
+                    const eventEl = createEventbriteHtml(event)
+                    console.log(eventEl)
+                    renderEventbrite(eventEl)
+                })
             })
-        })
     }
 }
+
+//grabs the search input and queries the Ticketmaster API
+const searchFormTicketmaster = () => {
+    const searchString = document.querySelector("#concerts-input").value
+    if (searchString) {
+        getTicketmasterData(searchString)
+            .then(concerts => {
+                // console.log(concerts._embedded.events)
+                concerts._embedded.events.forEach(concert => {
+                    console.log(concert)
+
+                })
+            }
+            )
+    }
+}  
