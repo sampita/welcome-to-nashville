@@ -17,15 +17,9 @@ const resultsFunction = () => {
     const resultsContainer = document.querySelector(".resultsContainer")
     resultsContainer.innerHTML = searchResults
 }
-/* 
-
- */
 
 const addToItinerary = (name, category) => {
-  let categoryField = document.querySelector(`#${category}-results`)
-  // let itineraryItem = document.createElement("p")
-  // console.log("categoryField", categoryField)
-  // itineraryItem.innerText = name
+  let categoryField = document.querySelector(`#${category}-itinerary`)
   categoryField.innerText = name
 }
 
