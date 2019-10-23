@@ -8,9 +8,7 @@ const getTicketmasterData = (searchString) => {
     .then(concerts => concerts.json())
 }
 
-const foodTypeSearch = function() {
-    return "what do you call a Japanese drummer boy, whose father has diarrhea? A slap happy jappy, with a crap happy pappy..."
-}
+
 
 
 const getEventbriteData = (searchString) => {
@@ -23,3 +21,5 @@ const getEventbriteData = (searchString) => {
     return fetch("https://raw.githubusercontent.com/nss-cohort-36/temp-eb-api/master/search-response.json")
     .then(r => r.json())
 }
+
+var searchKeyWord = ""

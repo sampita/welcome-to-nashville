@@ -5,7 +5,7 @@ const resultsFunction = () => {
     const searchResults = `
     <div class="card" style="width: 18rem;">
     <div class="card-header">
-        Results
+        <h3>Results</h3>
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">Cras justo odio</li>
@@ -27,3 +27,6 @@ const renderEventbrite = (htmlElement) => {
 const createEventbriteHtml = (event) => {
     return `<p>${event.name.text}</p>`
 }
+
+
+
