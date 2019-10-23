@@ -1,17 +1,15 @@
 // Purpose: This file populates the Search section of the index.html page.
 
 //function for search button event listener
-//grabs the search input
-const searchFormTicketmaster = () => {
-    const searchInput = document.querySelector("#concerts-input").value
-    getTicketmasterData(searchInput)
-    .then(parsedConcerts => console.log(parsedConcerts))
-}  
 
 
 // This function builds the search form and prints it to the DOM
 const buildSearchForm = () => {
     const searchForm = `
+    <h3 class="search-header">
+        Search for Things to Do in Nashville
+    </h3>
+
     <input id="parks-input" type="text" placeholder="parks by feature">
     <button id="parksSearchButton">Search</button>
     
@@ -55,10 +53,28 @@ const searchFormEventbrite = () => {
                 const eventEl = createCardContainer(name, address, "meetup")
                 // console.log("eventEl", eventEl)
                 renderCardToDom(eventEl)
-            })
-        })
-    }
+            }
+            )
+        }
+        )
 }
+
+//grabs the search input and queries the Ticketmaster API
+const searchFormTicketmaster = () => {
+    const searchString = document.querySelector("#concerts-input").value
+    if (searchString) {
+        getTicketmasterData(searchString)
+            .then(concerts => {
+                //returns name and address of each concert
+                concerts._embedded.events.forEach(concert => {
+                    concerts.name = concert.name
+                    concerts.address = concert._embedded.venues[0].address.line1
+                    console.log(concerts.name, concerts.address)
+                })
+            }
+            )
+    }
+}  
 
 const getZomatoDate = (searchString) => {
     return fetch(`https://developers.zomato.com/api/v2.1/search?entity_id=1138&entity_type=city&q=${searchKeyWord}&count=100`)
