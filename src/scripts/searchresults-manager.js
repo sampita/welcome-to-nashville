@@ -23,10 +23,10 @@ const resultsFunction = () => {
 
 const addToItinerary = (name, category) => {
   let categoryField = document.querySelector(`#${category}-results`)
-  let itineraryItem = document.createElement("p")
-  console.log("categoryField", categoryField)
-  itineraryItem.innerText = name
-  // categoryField.appendChild(itineraryItem)
+  // let itineraryItem = document.createElement("p")
+  // console.log("categoryField", categoryField)
+  // itineraryItem.innerText = name
+  categoryField.innerText = name
 }
 
 const saveCard = () => {

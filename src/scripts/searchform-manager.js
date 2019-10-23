@@ -46,10 +46,6 @@ const searchFormEventbrite = () => {
         getEventbriteData(searchString)
         .then(({events}) => {
             events.forEach(event => {
-                // console.log(event.name, event.description);
-                // console.log(event.start)
-                // console.log(event.venue.name)
-
                 // save 'name' and 'address' to variables for result card creation
                 const name = event.venue.name
                 const address = `${event.venue.address.address_1} ${event.venue.address.address_2}`
