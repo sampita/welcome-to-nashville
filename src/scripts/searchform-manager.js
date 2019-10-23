@@ -59,6 +59,7 @@ const searchFormTicketmaster = () => {
                 concerts._embedded.events.forEach(concert => {
                     concerts.name = concert.name
                     concerts.address = concert._embedded.venues[0].address.line1
+                    console.log(concerts.name, concerts.address)
                 })
             }
             )
