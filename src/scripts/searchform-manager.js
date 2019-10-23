@@ -55,10 +55,9 @@ const searchFormTicketmaster = () => {
     if (searchString) {
         getTicketmasterData(searchString)
             .then(concerts => {
-                // console.log(concerts._embedded.events)
                 concerts._embedded.events.forEach(concert => {
-                    console.log(concert)
-
+                    concerts.name = concert.name
+                    concerts.address = concert._embedded.venues[0].address.line1
                 })
             }
             )
