@@ -5,7 +5,7 @@ const resultsFunction = () => {
     const searchResults = `
     <div class="card" style="width: 18rem;">
     <div class="card-header">
-        Results
+        <h3>Results</h3>
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">Cras justo odio</li>
@@ -23,6 +23,7 @@ const addToItinerary = (name, category) => {
   categoryField.innerText = name
 }
 
+<<<<<<< HEAD
 const saveCard = () => {
   // get card Id from event
   let cardId = event.target.id.split("--")[1];
@@ -72,3 +73,11 @@ const createCardContainer = (name, location, category) => {
   // console.log(cardContainer);
   return cardContainer
 }
+=======
+const createEventbriteHtml = (event) => {
+    return `<p>${event.name.text}</p>`
+}
+
+
+
+>>>>>>> master
