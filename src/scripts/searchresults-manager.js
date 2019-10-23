@@ -27,3 +27,13 @@ const renderEventbrite = (htmlElement) => {
 const createEventbriteHtml = (event) => {
     return `<p>${event.name.text}</p>`
 }
+
+const renderParks = (htmlElement) => {
+  console.log("Rendering Parks results")
+  let resultContainer = document.querySelector(".resultsContainer")
+  resultContainer.innerHTML += htmlElement
+}
+
+const createParksHtml = (event) => {
+    return `<p>${event.name.text}</p>`
+}

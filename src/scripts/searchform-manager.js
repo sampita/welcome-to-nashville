@@ -50,3 +50,10 @@ const searchFormEventbrite = () => {
         })
     }
 }
+
+const searchFormParks = () => {
+    const searchInput = document.querySelector("#parks-input").value
+    getParksData(searchInput)
+    .then(parsedConcerts => console.log(parsedParks))
+}  
+

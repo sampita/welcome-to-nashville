@@ -23,3 +23,18 @@ const getEventbriteData = (searchString) => {
     return fetch("https://raw.githubusercontent.com/nss-cohort-36/temp-eb-api/master/search-response.json")
     .then(r => r.json())
 }
+
+const getParksData = (searchString) => {
+    
+}
+
+const parksApiBaseUrl = "https://data.nashville.gov/resource/74d7-b74t.json" 
+const parkSearch = (searchInput) => fetch(`
+${parksApiBaseUrl}?${searchInput} `,
+    {
+        "headers": {
+            "Accept": "application/json",
+            "X-App-Token": parksApiKey
+        }
+    })
+    .then(response => response.json());
