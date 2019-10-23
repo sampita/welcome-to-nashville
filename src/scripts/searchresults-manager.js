@@ -17,13 +17,64 @@ const resultsFunction = () => {
     const resultsContainer = document.querySelector(".resultsContainer")
     resultsContainer.innerHTML = searchResults
 }
+/* 
 
-const renderEventbrite = (htmlElement) => {
-    console.log("Rendering Eventbrite results")
-    let resultContainer = document.querySelector(".resultsContainer")
-    resultContainer.innerHTML += htmlElement
+ */
+
+const addToItinerary = (name, category) => {
+  let categoryField = document.querySelector(`#${category}-results`)
+  let itineraryItem = document.createElement("p")
+  console.log("categoryField", categoryField)
+  itineraryItem.innerText = name
+  // categoryField.appendChild(itineraryItem)
 }
 
-const createEventbriteHtml = (event) => {
-    return `<p>${event.name.text}</p>`
+const saveCard = () => {
+  // get card Id from event
+  let cardId = event.target.id.split("--")[1];
+  let category = event.path[1].id.split("--")[0]
+  console.log("card class", category);
+  let cardToSave = document.querySelector(`#${category}--${cardId} > #name`).textContent;
+  console.log("card text", cardToSave);
+  addToItinerary(cardToSave, category)
+}
+
+const renderCardToDom = (card) => {
+  let cardList = document.querySelector(".list-group")
+  cardList.appendChild(card);
+}
+
+// iterate length of current card list and create new id
+const getNewIdNumber = () => {
+  let cardArrayLength = document.getElementsByClassName("list-group-item").length;
+  console.log("card array", cardArrayLength);
+  return cardArrayLength + 1 // prevent 0-indexed card id list
+}
+
+const createCardContainer = (name, location, category) => {
+  // console.log("name", name)
+  const cardContainer = document.createElement("li")
+  cardContainer.className = `${category} list-group-item`;
+  let idNumber = getNewIdNumber();
+  cardContainer.id = `${category}--${idNumber}`;
+
+  const nameElement = document.createElement("p");
+  nameElement.id = "name"
+  nameElement.textContent = name;
+
+  const locationElement = document.createElement("p");
+  locationElement.id = "location"
+  locationElement.textContent = location;
+
+  const saveElement = document.createElement("button")
+  saveElement.id = `save--${idNumber}`;
+  saveElement.textContent = "Save";
+  saveElement.addEventListener("click", saveCard);
+
+  // add child items to card
+  cardContainer.appendChild(nameElement);
+  cardContainer.appendChild(locationElement);
+  cardContainer.appendChild(saveElement);
+  // console.log(cardContainer);
+  return cardContainer
 }

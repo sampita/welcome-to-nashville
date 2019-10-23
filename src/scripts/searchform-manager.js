@@ -33,6 +33,9 @@ const buildSearchForm = () => {
 // grab event search data and query the API
 const searchFormEventbrite = () => {
     let searchString = document.querySelector("#meetups-input").value;
+    // clear the resultsContainer's previous search results
+    let resultsContainer = document.querySelector(".list-group")
+    resultsContainer.innerHTML = ""
     console.log(`Eventually will search for "${searchString}"`); // remove when done testing
     if (searchString) {
         getEventbriteData(searchString)
@@ -42,10 +45,13 @@ const searchFormEventbrite = () => {
                 // console.log(event.name, event.description);
                 // console.log(event.start)
                 // console.log(event.venue.name)
-                // console.log(event.venue.address) // returns object
-                const eventEl = createEventbriteHtml(event)
-                console.log(eventEl)
-                renderEventbrite(eventEl)
+                const name = event.venue.name
+                const address = `${event.venue.address.address_1} ${event.venue.address.address_2}`
+                console.log('name:', name)
+                console.log('address:', address)
+                const eventEl = createCardContainer(name, address, "meetup")
+                // console.log("eventEl", eventEl)
+                renderCardToDom(eventEl)
             })
         })
     }
