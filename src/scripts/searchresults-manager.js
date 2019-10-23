@@ -28,5 +28,14 @@ const createEventbriteHtml = (event) => {
     return `<p>${event.name.text}</p>`
 }
 
+const renderZomato = (htmlElement) => {
+  console.log("Rendering Zomato Results")
+  let resultContainer = document.querySelector(".resultsContainer")
+  resultContainer.innerHTML += htmlElement
+}
+
+const createZomatoHtml = (restaurants) => {
+  return `<p>${restaurants.restaurant.name}</p>`
+}
 
 

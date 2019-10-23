@@ -1,12 +1,5 @@
-// Purpose: This file populates the Search section of the index.html page.
 
-//function for search button event listener
-//grabs the search input
-const searchFormTicketmaster = () => {
-    const searchInput = document.querySelector("#concerts-input").value
-    getTicketmasterData(searchInput)
-        .then(parsedConcerts => console.log(parsedConcerts))
-}
+
 
 
 // This function builds the search form and prints it to the DOM
@@ -55,14 +48,18 @@ const searchFormEventbrite = () => {
     }
 }
 
+// Accesses restaurants input and queries Zomato API
 const searchFormZomato = () => {
-    let searchString = document.querySelector("#restaurant-input").value;
+    const searchString = document.querySelector("#restaurants-input").value;
     if (searchString) {
         getZomatoData(searchString)
-            .then(({ events }) => {
-                events.foreach(event => {
-                    const eventEl = createZomatoHtml(event)
-                    renderZomato(eventEl)
+        //for now this console logs restaurant element
+            .then(( food ) => {
+                // console.log(food.restaurants)
+                food.restaurants.forEach(restaurant => {
+                    const restaurantElement = createZomatoHtml(restaurant)
+                    console.log(restaurantElement)
+                    renderZomato(restaurantElement)
                 })
             })
     }
@@ -85,8 +82,4 @@ const searchFormTicketmaster = () => {
     }
 }  
 
-const getZomatoDate = (searchString) => {
-    return fetch(`https://developers.zomato.com/api/v2.1/search?entity_id=1138&entity_type=city&q=${searchKeyWord}&count=100`)
-    .then(restaurants => restaurants.json())
-}
 
