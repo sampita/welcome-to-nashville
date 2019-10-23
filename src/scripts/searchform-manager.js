@@ -58,6 +58,7 @@ const searchFormEventbrite = () => {
         }
         )
 }
+}
 
 //grabs the search input and queries the Ticketmaster API
 const searchFormTicketmaster = () => {
