@@ -1,6 +1,3 @@
-createItineraryContainer();
-
-
 // Search HTML
         // <!-- parks search  -->
         // <!-- TODO: drop down? -->
@@ -26,3 +23,5 @@ attachSearchEvent();
 searchFormTicketmaster();
 
 resultsFunction();
+
+createItineraryContainer();
