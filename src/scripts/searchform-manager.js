@@ -51,9 +51,28 @@ const searchFormEventbrite = () => {
     }
 }
 
+// grab event search data and query the API
 const searchFormParks = () => {
-    const searchInput = document.querySelector("#parks-input").value
-    getParksData(searchInput)
-    .then(parsedConcerts => console.log(parsedParks))
-}  
+    let searchString = document.querySelector("#parks-input").value;
+    console.log(`Eventually will search for "${searchString}"`); // remove when done testing
+    if (searchString) {
+        getParksData(searchString)
+        .then(({events}) => {
+            // console.log({events}.events)
+            events.forEach(event => {
+                // console.log(event.name, event.description);
+                // console.log(event.start)
+                // console.log(event.venue.name)
+                // console.log(event.venue.address) // returns object
+                const eventEl = createParksHtml(event)
+                console.log(eventEl)
+                renderParks(eventEl)
+            })
+        })
+    }
+}
 
+const getZomatoDate = (searchString) => {
+    return fetch(`https://developers.zomato.com/api/v2.1/search?entity_id=1138&entity_type=city&q=${searchKeyWord}&count=100`)
+    .then(restaurants => restaurants.json())
+}

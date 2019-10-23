@@ -5,7 +5,7 @@ const resultsFunction = () => {
     const searchResults = `
     <div class="card" style="width: 18rem;">
     <div class="card-header">
-        Results
+        <h3>Results</h3>
     </div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">Cras justo odio</li>
@@ -28,12 +28,6 @@ const createEventbriteHtml = (event) => {
     return `<p>${event.name.text}</p>`
 }
 
-const renderParks = (htmlElement) => {
-  console.log("Rendering Parks results")
-  let resultContainer = document.querySelector(".resultsContainer")
-  resultContainer.innerHTML += htmlElement
-}
 
-const createParksHtml = (event) => {
-    return `<p>${event.name.text}</p>`
-}
+
+
