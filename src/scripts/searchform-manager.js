@@ -1,17 +1,15 @@
 // Purpose: This file populates the Search section of the index.html page.
 
 //function for search button event listener
-//grabs the search input
-const searchFormTicketmaster = () => {
-    const searchInput = document.querySelector("#concerts-input").value
-    getTicketmasterData(searchInput)
-    .then(parsedConcerts => console.log(parsedConcerts))
-}  
 
 
 // This function builds the search form and prints it to the DOM
 const buildSearchForm = () => {
     const searchForm = `
+    <h3 class="search-header">
+        Search for Things to Do in Nashville
+    </h3>
+
     <input id="parks-input" type="text" placeholder="parks by feature">
     <button id="parksSearchButton">Search</button>
     
@@ -36,43 +34,55 @@ const searchFormEventbrite = () => {
     console.log(`Eventually will search for "${searchString}"`); // remove when done testing
     if (searchString) {
         getEventbriteData(searchString)
-        .then(({events}) => {
-            // console.log({events}.events)
-            events.forEach(event => {
-                // console.log(event.name, event.description);
-                // console.log(event.start)
-                // console.log(event.venue.name)
-                // console.log(event.venue.address) // returns object
-                const eventEl = createEventbriteHtml(event)
-                console.log(eventEl)
-                renderEventbrite(eventEl)
+            .then(({ events }) => {
+                // console.log({events}.events)
+                events.forEach(event => {
+                    // console.log(event.name, event.description);
+                    // console.log(event.start)
+                    // console.log(event.venue.name)
+                    // console.log(event.venue.address) // returns object
+                    const eventEl = createEventbriteHtml(event)
+                    console.log(eventEl)
+                    renderEventbrite(eventEl)
+                })
             })
-        })
     }
 }
 
-// grab event search data and query the API
 const searchFormParks = () => {
     let searchString = document.querySelector("#parks-input").value;
-    console.log(`Eventually will search for "${searchString}"`); // remove when done testing
     if (searchString) {
         getParksData(searchString)
-        .then(({events}) => {
-            // console.log({events}.events)
-            events.forEach(event => {
-                // console.log(event.name, event.description);
-                // console.log(event.start)
-                // console.log(event.venue.name)
-                // console.log(event.venue.address) // returns object
-                const eventEl = createParksHtml(event)
-                console.log(eventEl)
-                renderParks(eventEl)
+            .then(( parks ) => {
+                // console.log(parks)
+                parks.forEach(park => {
+                    let parkAddress = park.mapped_location.human_address.split("\"")[3]
+                    console.log(parkAddress)
+                    console.log(park.park_name, park.mapped_location.human_address)
+                })
             })
-        })
     }
 }
+
+//grabs the search input and queries the Ticketmaster API
+const searchFormTicketmaster = () => {
+    const searchString = document.querySelector("#concerts-input").value
+    if (searchString) {
+        getTicketmasterData(searchString)
+            .then(concerts => {
+                //returns name and address of each concert
+                concerts._embedded.events.forEach(concert => {
+                    concerts.name = concert.name
+                    concerts.address = concert._embedded.venues[0].address.line1
+                    console.log(concerts.name, concerts.address)
+                })
+            }
+            )
+    }
+}  
 
 const getZomatoDate = (searchString) => {
     return fetch(`https://developers.zomato.com/api/v2.1/search?entity_id=1138&entity_type=city&q=${searchKeyWord}&count=100`)
     .then(restaurants => restaurants.json())
 }
+

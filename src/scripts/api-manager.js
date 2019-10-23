@@ -4,8 +4,8 @@ ticketmasterApiBaseUrl = "https://app.ticketmaster.com/discovery/v2/"
 
 // TODO: write fetch call for ticketmaster API
 const getTicketmasterData = (searchString) => {
-    return fetch(`${ticketmasterApiBaseUrl}events.json?classificationName=music&dmaId=343&apikey=${ticketmasterApiKey}&q=${searchString}`)
-    .then(concerts => concerts.json())
+    return fetch(`${ticketmasterApiBaseUrl}events.json?classificationName=${searchString}&dmaId=343&city=nashville&apikey=${ticketmasterApiKey}`)
+        .then(concerts => concerts.json())
 }
 
 
@@ -19,21 +19,18 @@ const getEventbriteData = (searchString) => {
     //     }
     // }
     return fetch("https://raw.githubusercontent.com/nss-cohort-36/temp-eb-api/master/search-response.json")
-    .then(r => r.json())
+        .then(r => r.json())
 }
 
 const getParksData = (searchString) => {
-    
-}
 
-const parksApiBaseUrl = "https://data.nashville.gov/resource/74d7-b74t.json" 
-const parkSearch = (searchInput) => fetch(`
-${parksApiBaseUrl}?${searchInput} `,
-    {
-        "headers": {
-            "Accept": "application/json",
-            "X-App-Token": parksApiKey
-        }
-    })
-    .then(response => response.json());
-var searchKeyWord = ""
+    const parksApiBaseUrl = "https://data.nashville.gov/resource/74d7-b74t.json"
+    return fetch(`
+${parksApiBaseUrl}?${searchString}=Yes`, {
+            "headers": {
+                "Accept": "application/json",
+                "X-App-Token": parksApiKey
+            }
+        })
+        .then(response => response.json());
+}
