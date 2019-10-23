@@ -6,8 +6,6 @@ buildSearchForm();
 
 attachSearchEvent();
 
-searchFormTicketmaster();
-
 resultsFunction();
 
 createItineraryContainer();

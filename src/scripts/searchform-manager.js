@@ -28,14 +28,19 @@ const buildSearchForm = () => {
 
 }
 
+
+// clear the resultsContainer's previous search results
+const clearResults = () => {
+    let resultsContainer = document.querySelector(".list-group")
+    resultsContainer.innerHTML = ""
+}
+
 // grab event search data and query the API
 const searchFormEventbrite = () => {
     let searchString = document.querySelector("#meetups-input").value;
 
-    // clear the resultsContainer's previous search results
-    let resultsContainer = document.querySelector(".list-group")
-    resultsContainer.innerHTML = ""
 
+    clearResults()
     // remove line below when done testing
     console.log(`Eventually will search for "${searchString}"`);
 
@@ -63,6 +68,10 @@ const searchFormEventbrite = () => {
 //grabs the search input and queries the Ticketmaster API
 const searchFormTicketmaster = () => {
     const searchString = document.querySelector("#concerts-input").value
+
+    //clears previous results before appending new results to DOM
+    clearResults()
+
     if (searchString) {
         getTicketmasterData(searchString)
             .then(concerts => {
@@ -71,6 +80,10 @@ const searchFormTicketmaster = () => {
                     concerts.name = concert.name
                     concerts.address = concert._embedded.venues[0].address.line1
                     console.log(concerts.name, concerts.address)
+                    //create new search result card
+                    const concertEl = createCardContainer(concerts.name, concerts.address, "concert")
+
+                    renderCardToDom(concertEl)
                 })
             }
             )
