@@ -23,7 +23,6 @@ const addToItinerary = (name, category) => {
   categoryField.innerText = name
 }
 
-<<<<<<< HEAD
 const saveCard = () => {
   // get card Id from event
   let cardId = event.target.id.split("--")[1];
@@ -73,11 +72,3 @@ const createCardContainer = (name, location, category) => {
   // console.log(cardContainer);
   return cardContainer
 }
-=======
-const createEventbriteHtml = (event) => {
-    return `<p>${event.name.text}</p>`
-}
-
-
-
->>>>>>> master
