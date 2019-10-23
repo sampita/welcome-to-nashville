@@ -9,3 +9,5 @@ attachSearchEvent();
 searchFormTicketmaster();
 
 resultsFunction();
+
+createItineraryContainer();

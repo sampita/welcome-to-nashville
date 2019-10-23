@@ -5,14 +5,14 @@ const createItineraryContainer = () => {
     return `
     <article class="itinerary">
         <h3>Itinerary</h3>
-            <h5 id="park-itinerary"><strong>Park:</strong></h5>
-            <p id="park-results"></p>
-            <h5 id="restaurant-itinerary"><strong>Restaurant:</strong></h5>
-            <p id="restaurant-results"></p>
-            <h5 id="meetup-itinerary"><strong>Meetup:</strong></h5>
-            <p id="meetup-results"></p>
-            <h5 id="concert-itinerary"><strong>Concert:</strong></h5>
-            <p id="concert-results"></p>
+            <h5><strong>Park:</strong></h5>
+            <p id="park-itinerary"></p>
+            <h5><strong>Restaurant:</strong></h5>
+            <p id="restaurant-itinerary"></p>
+            <h5><strong>Meetup:</strong></h5>
+            <p id="meetup-itinerary"></p>
+            <h5><strong>Concert:</strong></h5>
+            <p id="concert-itinerary"></p>
     </article>
     `
 }
