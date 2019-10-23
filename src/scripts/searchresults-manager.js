@@ -18,11 +18,13 @@ const resultsFunction = () => {
     resultsContainer.innerHTML = searchResults
 }
 
+// factory function to add saved result to corresponding category in the itineraryContainer
 const addToItinerary = (name, category) => {
   let categoryField = document.querySelector(`#${category}-itinerary`)
   categoryField.innerText = name
 }
 
+// factory function that grabs the textContent of the result that the save was clicked on
 const saveCard = () => {
   // get card Id from event
   let cardId = event.target.id.split("--")[1];
@@ -33,6 +35,7 @@ const saveCard = () => {
   addToItinerary(cardToSave, category)
 }
 
+// factory function that renders search results to the resultsContainer
 const renderCardToDom = (card) => {
   let cardList = document.querySelector(".list-group")
   cardList.appendChild(card);
@@ -45,6 +48,7 @@ const getNewIdNumber = () => {
   return cardArrayLength + 1 // prevent 0-indexed card id list
 }
 
+// function that should be called in the .forEach loop of the fetch call flow
 const createCardContainer = (name, location, category) => {
   // console.log("name", name)
   const cardContainer = document.createElement("li")
