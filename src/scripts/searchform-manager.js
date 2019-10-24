@@ -55,8 +55,8 @@ const searchFormEventbrite = () => {
                 if (address === "null"){
                     address = "Address unavailable"
                 }
-                console.log('name:', name)
-                console.log('address:', address)
+                // console.log('name:', name)
+                // console.log('address:', address)
                 // create new search result card
                 const eventEl = createCardContainer(name, address, "meetup")
                 // console.log("eventEl", eventEl)
