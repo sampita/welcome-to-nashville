@@ -7,5 +7,3 @@ attachSearchEvent();
 renderResultsContainer();
 
 createItineraryContainer();
-
-createSearchForm();
