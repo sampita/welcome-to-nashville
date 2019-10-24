@@ -67,7 +67,7 @@ const attachSearchEvent = () => {
         }
     }
     // Selects restaurant input
-    enterKeyHandler = document.getElementById("parks-input")
+    enterKeyHandler = document.getElementById("parks-dropdown-box")
     // Execute a function when the user releases a key on the keyboard
     enterKeyHandler.addEventListener("keyup", parksEventFunction);
 
