@@ -3,8 +3,6 @@
     text-align: center;
 }
 
-/* Ks */
-
 .search-field {
     display: block;
 }
@@ -14,7 +12,7 @@ input {
     margin: 10px;
 }
 
-ul {
+.list-group {
     display: flex;
     flex-flow: row wrap;
 }
