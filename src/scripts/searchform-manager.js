@@ -19,13 +19,13 @@ const buildSearchForm = () => {
     <button id="parksSearchButton">Search</button>
     
     <input id="restaurants-input" type="text" placeholder="restaurants by food type">
-    <button id="restaurantsSearchButton">Search</button>
+    <button  id="restaurantsSearchButton">Search</button>
     
     <input id="meetups-input" type="text" placeholder="meetups by topic">
-    <button id="meetupsSearchButton">Search</button>
+    <button  id="meetupsSearchButton">Search</button>
     
     <input id="concerts-input" type="text" placeholder="concerts by genre">
-    <button id="concertsSearchButton">Search</button>
+    <button  id="concertsSearchButton">Search</button>
     `
     // Gets reference to Search container in the index.html file and prints the above HTML code to the DOM.
     const searchContainer = document.querySelector(".searchContainer")
