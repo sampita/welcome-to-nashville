@@ -10,10 +10,19 @@ const buildSearchForm = () => {
         Search for Things to Do in Nashville
     </h3>
 
-    <form id="parks-input" type="text" placeholder="parks by feature">
-    </form>
+    
+        <fieldset>
+            <select id ="parks-dropdown-box">
+                <option value="" disabled selected hidden>parks by feature</option>
+                <option value="dog_park" id="dog1">Dog Park</option>
+                <option value="hiking_trails">Hiking Trails</option>
+                <option value="playground">Playground</option>
+                <option value="basketball_court">Basketball Courts</option>
+                <option value="swimming_pool">Swimming Pool</option>
+            </select>
+            <button id="parksSearchButton">Search</button>
+            </fieldset>
 
-    <button id="parksSearchButton">Search</button>
     
     <input id="restaurants-input" type="text" placeholder="restaurants by food type">
     <button id="restaurantsSearchButton">Search</button>
@@ -52,10 +61,12 @@ const searchFormEventbrite = () => {
 }
 
 const searchFormParks = () => {
-    let searchString = document.querySelector("#parks-input").value;
+    let dropDownList = document.querySelector("#parks-dropdown-box");
+    let searchString = dropDownList[dropDownList.selectedIndex].value
+    console.log("gtfo", searchString)
     if (searchString) {
         getParksData(searchString)
-            .then(( parks ) => {
+        .then(( parks ) => {
                 // console.log(parks)
                 parks.forEach(park => {
                     let parkAddress = park.mapped_location.human_address.split("\"")[3]
