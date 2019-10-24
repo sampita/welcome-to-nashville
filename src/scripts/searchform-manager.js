@@ -8,6 +8,10 @@ const buildSearchForm = () => {
     <h3 class="search-header">
         Search for Things to Do in Nashville
     </h3>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 6a191d77401c3dcd3e6710c5627c786b55af6e4b
         <select id ="parks-dropdown-box" size="1">
             <option value="parks by feature" disabled selected hidden>parks by feature</option>
             <option value="dog_park">Dog Park</option>
@@ -17,6 +21,14 @@ const buildSearchForm = () => {
             <option value="swimming_pool">Swimming Pool</option>
         </select>
     <button id="parksSearchButton">Search</button>
+<<<<<<< HEAD
+=======
+=======
+
+    <input id="parks-input" type="text" placeholder="parks by feature">
+    <button  id="parksSearchButton">Search</button>
+>>>>>>> master
+>>>>>>> 6a191d77401c3dcd3e6710c5627c786b55af6e4b
     
     <input id="restaurants-input" type="text" placeholder="restaurants by food type">
     <button  id="restaurantsSearchButton">Search</button>
