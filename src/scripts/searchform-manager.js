@@ -30,19 +30,45 @@ const buildSearchForm = () => {
 // grab event search data and query the API
 const searchFormEventbrite = () => {
     let searchString = document.querySelector("#meetups-input").value;
-    console.log(`Eventually will search for "${searchString}"`); // remove when done testing
+
+    // clear the resultsContainer's previous search results
+    let resultsContainer = document.querySelector(".list-group")
+    resultsContainer.innerHTML = ""
+
+    // remove line below when done testing
+    console.log(`Eventually will search for "${searchString}"`);
+
+    // prevent empty string search 
     if (searchString) {
         getEventbriteData(searchString)
-            .then(({ events }) => {
-                // console.log({events}.events)
-                events.forEach(event => {
-                    // console.log(event.name, event.description);
-                    // console.log(event.start)
-                    // console.log(event.venue.name)
-                    // console.log(event.venue.address) // returns object
-                    const eventEl = createEventbriteHtml(event)
-                    console.log(eventEl)
-                    renderEventbrite(eventEl)
+        .then(({events}) => {
+            events.forEach(event => {
+                // save 'name' and 'address' to variables for result card creation
+                const name = event.venue.name
+                const address = `${event.venue.address.address_1} ${event.venue.address.address_2}`
+                console.log('name:', name)
+                console.log('address:', address)
+                // create new search result card
+                const eventEl = createCardContainer(name, address, "meetup")
+                // console.log("eventEl", eventEl)
+                renderCardToDom(eventEl)
+            }
+            )
+        }
+        )
+}
+}
+
+const searchFormParks = () => {
+    let searchString = document.querySelector("#parks-input").value;
+    if (searchString) {
+        getParksData(searchString)
+            .then(( parks ) => {
+                // console.log(parks)
+                parks.forEach(park => {
+                    let parkAddress = park.mapped_location.human_address.split("\"")[3]
+                    console.log(parkAddress)
+                    console.log(park.park_name, park.mapped_location.human_address)
                 })
             })
     }
@@ -81,5 +107,4 @@ const searchFormTicketmaster = () => {
             )
     }
 }  
-
 
