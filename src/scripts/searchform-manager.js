@@ -86,15 +86,17 @@ const searchFormParks = () => {
 // Accesses restaurants input and queries Zomato API
 const searchFormZomato = () => {
     const searchString = document.querySelector("#restaurants-input").value;
+    clearResults()
     if (searchString) {
         getZomatoData(searchString)
         //for now this console logs restaurant element
             .then(( food ) => {
                 // console.log(food.restaurants)
                 food.restaurants.forEach(restaurant => {
-                    const restaurantElement = createZomatoHtml(restaurant)
-                    console.log(restaurantElement)
-                    renderZomato(restaurantElement)
+                    const restaurantName = restaurant.restaurant.name
+                    const restaurantAddress = restaurant.restaurant.location.address
+                    const restaurantElement = createCardContainer(restaurantName, restaurantAddress, "restaurant")
+                    renderCardToDom(restaurantElement)
                 })
             })
     }
