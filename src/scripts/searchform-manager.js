@@ -87,7 +87,7 @@ const searchFormParks = () => {
         getParksData(searchString)
         .then(( parks ) => {
                 // console.log(parks)
-                let fiveParks = parks.slice(0,5)
+                let fiveParks = parks.slice(0,6)
                 fiveParks.forEach(park => {
                     let parkAddress = park.mapped_location.human_address.split("\"")[3]
                     console.log(parkAddress)
