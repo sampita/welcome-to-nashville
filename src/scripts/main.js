@@ -7,3 +7,6 @@ attachSearchEvent();
 renderResultsContainer();
 
 createItineraryContainer();
+
+
+
