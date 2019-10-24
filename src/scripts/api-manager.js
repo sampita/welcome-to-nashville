@@ -4,8 +4,8 @@ ticketmasterApiBaseUrl = "https://app.ticketmaster.com/discovery/v2/"
 
 // TODO: write fetch call for ticketmaster API
 const getTicketmasterData = (searchString) => {
-    return fetch(`${ticketmasterApiBaseUrl}events.json?classificationName=${searchString}&dmaId=343&city=nashville&apikey=${ticketmasterApiKey}`)
-        .then(concerts => concerts.json())
+    return fetch(`${ticketmasterApiBaseUrl}events.json?classificationName=${searchString}&dmaId=343&city=nashville&size=6&apikey=${ticketmasterApiKey}`)
+    .then(concerts => concerts.json())
 }
 
 
@@ -22,6 +22,13 @@ const getEventbriteData = (searchString) => {
         .then(r => r.json())
 }
 
+
+
+const getZomatoData = (searchString) => {
+    return fetch(`https://developers.zomato.com/api/v2.1/search?entity_id=1138&entity_type=city&q=${searchString}&count=5&apikey=${zomatoApiKey}`)
+    .then(restaurants => restaurants.json())
+
+}
 const getParksData = (searchString) => {
 
     const parksApiBaseUrl = "https://data.nashville.gov/resource/74d7-b74t.json"

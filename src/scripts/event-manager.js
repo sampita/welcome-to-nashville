@@ -14,7 +14,7 @@ const attachSearchEvent = () => {
     parksSearchButton.addEventListener("click", searchFormParks)
 
     const restaurantsSearchButton = document.querySelector("#restaurantsSearchButton")
-    restaurantsSearchButton.addEventListener("click", myfunction)
+    restaurantsSearchButton.addEventListener("click", searchFormZomato)
 
     const meetupsSearchButton = document.querySelector("#meetupsSearchButton")
     meetupsSearchButton.addEventListener("click", searchFormEventbrite)

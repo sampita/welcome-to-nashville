@@ -1,6 +1,5 @@
-// Purpose: This file populates the Search section of the index.html page.
 
-//function for search button event listener
+
 
 
 // This function builds the search form and prints it to the DOM
@@ -30,25 +29,41 @@ const buildSearchForm = () => {
 
 }
 
+
+// clear the resultsContainer's previous search results
+const clearResults = () => {
+    let resultsContainer = document.querySelector(".list-group")
+    resultsContainer.innerHTML = ""
+}
+
 // grab event search data and query the API
 const searchFormEventbrite = () => {
     let searchString = document.querySelector("#meetups-input").value;
-    console.log(`Eventually will search for "${searchString}"`); // remove when done testing
+
+
+    clearResults()
+    // remove line below when done testing
+    console.log(`Eventually will search for "${searchString}"`);
+
+    // prevent empty string search 
     if (searchString) {
         getEventbriteData(searchString)
-            .then(({ events }) => {
-                // console.log({events}.events)
-                events.forEach(event => {
-                    // console.log(event.name, event.description);
-                    // console.log(event.start)
-                    // console.log(event.venue.name)
-                    // console.log(event.venue.address) // returns object
-                    const eventEl = createEventbriteHtml(event)
-                    console.log(eventEl)
-                    renderEventbrite(eventEl)
-                })
-            })
-    }
+        .then(({events}) => {
+            events.forEach(event => {
+                // save 'name' and 'address' to variables for result card creation
+                const name = event.venue.name
+                const address = `${event.venue.address.address_1} ${event.venue.address.address_2}`
+                console.log('name:', name)
+                console.log('address:', address)
+                // create new search result card
+                const eventEl = createCardContainer(name, address, "meetup")
+                // console.log("eventEl", eventEl)
+                renderCardToDom(eventEl)
+            }
+            )
+        }
+        )
+}
 }
 
 const searchFormParks = () => {
@@ -66,9 +81,30 @@ const searchFormParks = () => {
     }
 }
 
+// Accesses restaurants input and queries Zomato API
+const searchFormZomato = () => {
+    const searchString = document.querySelector("#restaurants-input").value;
+    if (searchString) {
+        getZomatoData(searchString)
+        //for now this console logs restaurant element
+            .then(( food ) => {
+                // console.log(food.restaurants)
+                food.restaurants.forEach(restaurant => {
+                    const restaurantElement = createZomatoHtml(restaurant)
+                    console.log(restaurantElement)
+                    renderZomato(restaurantElement)
+                })
+            })
+    }
+}
+
 //grabs the search input and queries the Ticketmaster API
 const searchFormTicketmaster = () => {
     const searchString = document.querySelector("#concerts-input").value
+
+    //clears previous results before appending new results to DOM
+    clearResults()
+
     if (searchString) {
         getTicketmasterData(searchString)
             .then(concerts => {
@@ -77,14 +113,13 @@ const searchFormTicketmaster = () => {
                     concerts.name = concert.name
                     concerts.address = concert._embedded.venues[0].address.line1
                     console.log(concerts.name, concerts.address)
+                    //create new search result card
+                    const concertEl = createCardContainer(concerts.name, concerts.address, "concert")
+
+                    renderCardToDom(concertEl)
                 })
             }
             )
     }
 }  
-
-const getZomatoDate = (searchString) => {
-    return fetch(`https://developers.zomato.com/api/v2.1/search?entity_id=1138&entity_type=city&q=${searchKeyWord}&count=100`)
-    .then(restaurants => restaurants.json())
-}
 
