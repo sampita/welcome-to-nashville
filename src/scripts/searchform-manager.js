@@ -8,7 +8,6 @@ const buildSearchForm = () => {
     <h3 class="search-header">
         Search for Things to Do in Nashville
     </h3>
-<<<<<<< HEAD
     <div class="search-field">
         <input id="parks-input" type="text" placeholder="parks by feature">
         <button id="parksSearchButton">Search</button>
@@ -25,20 +24,6 @@ const buildSearchForm = () => {
         <input id="concerts-input" type="text" placeholder="concerts by genre">
         <button id="concertsSearchButton">Search</button>
     </div>
-=======
-
-    <input id="parks-input" type="text" placeholder="parks by feature">
-    <button  id="parksSearchButton">Search</button>
-    
-    <input id="restaurants-input" type="text" placeholder="restaurants by food type">
-    <button  id="restaurantsSearchButton">Search</button>
-    
-    <input id="meetups-input" type="text" placeholder="meetups by topic">
-    <button  id="meetupsSearchButton">Search</button>
-    
-    <input id="concerts-input" type="text" placeholder="concerts by genre">
-    <button  id="concertsSearchButton">Search</button>
->>>>>>> master
     `
     // Gets reference to Search container in the index.html file and prints the above HTML code to the DOM.
     const searchContainer = document.querySelector(".searchContainer")
