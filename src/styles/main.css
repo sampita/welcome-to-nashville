@@ -1,10 +1,12 @@
 .jumbotron {
-    background-color: turquoise;
+    /* background-color: turquoise; */
     text-align: center;
 }
 
-.center {
-    text-align: center;
+/* Ks */
+
+.search-field {
+    display: block;
 }
 
 input {
