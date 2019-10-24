@@ -70,6 +70,7 @@ const searchFormEventbrite = () => {
 
 const searchFormParks = () => {
     let searchString = document.querySelector("#parks-input").value;
+    clearResults()
     if (searchString) {
         getParksData(searchString)
             .then(( parks ) => {
@@ -77,7 +78,11 @@ const searchFormParks = () => {
                 parks.forEach(park => {
                     let parkAddress = park.mapped_location.human_address.split("\"")[3]
                     console.log(parkAddress)
+                    let parkName = park.park_name
                     console.log(park.park_name, park.mapped_location.human_address)
+                    let parkEl = createCardContainer(parkName, parkAddress, "park")
+                    console.log("hi", parkEl)
+                    renderCardToDom(parkEl)
                 })
             })
     }
