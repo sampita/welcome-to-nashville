@@ -1,6 +1,5 @@
-// Purpose: This file populates the Search section of the index.html page.
 
-//function for search button event listener
+
 
 
 // This function builds the search form and prints it to the DOM
@@ -75,6 +74,23 @@ const searchFormParks = () => {
     }
 }
 
+// Accesses restaurants input and queries Zomato API
+const searchFormZomato = () => {
+    const searchString = document.querySelector("#restaurants-input").value;
+    if (searchString) {
+        getZomatoData(searchString)
+        //for now this console logs restaurant element
+            .then(( food ) => {
+                // console.log(food.restaurants)
+                food.restaurants.forEach(restaurant => {
+                    const restaurantElement = createZomatoHtml(restaurant)
+                    console.log(restaurantElement)
+                    renderZomato(restaurantElement)
+                })
+            })
+    }
+}
+
 //grabs the search input and queries the Ticketmaster API
 const searchFormTicketmaster = () => {
     const searchString = document.querySelector("#concerts-input").value
@@ -92,7 +108,3 @@ const searchFormTicketmaster = () => {
     }
 }  
 
-const getZomatoDate = (searchString) => {
-    return fetch(`https://developers.zomato.com/api/v2.1/search?entity_id=1138&entity_type=city&q=${searchKeyWord}&count=100`)
-    .then(restaurants => restaurants.json())
-}
