@@ -25,7 +25,7 @@ const getEventbriteData = (searchString) => {
 
 
 const getZomatoData = (searchString) => {
-    return fetch(`https://developers.zomato.com/api/v2.1/search?entity_id=1138&entity_type=city&q=${searchString}&count=5&apikey=${zomatoApiKey}`)
+    return fetch(`https://developers.zomato.com/api/v2.1/search?entity_id=1138&entity_type=city&q=${searchString}&count=6&apikey=${zomatoApiKey}`)
     .then(restaurants => restaurants.json())
 
 }

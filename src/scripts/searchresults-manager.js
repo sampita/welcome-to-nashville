@@ -38,7 +38,7 @@ const saveCard = () => {
 const renderZomato = (htmlElement) => {
   console.log("Rendering Zomato Results")
   let resultContainer = document.querySelector(".resultsContainer")
-  resultContainer.innerHTML += htmlElement
+  resultContainer.innerHTML = htmlElement
 }
 
 const createZomatoHtml = (restaurants) => {
