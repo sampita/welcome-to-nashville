@@ -9,9 +9,7 @@ const buildSearchForm = () => {
         Search for Things to Do in Nashville
     </h3>
 
-    <form id="parks-input" type="text" placeholder="parks by feature">
-    </form>
-
+    <input id="parks-input" type="text" placeholder="parks by feature">
     <button id="parksSearchButton">Search</button>
     
     <input id="restaurants-input" type="text" placeholder="restaurants by food type">
@@ -68,6 +66,7 @@ const searchFormEventbrite = () => {
 
 const searchFormParks = () => {
     let searchString = document.querySelector("#parks-input").value;
+    clearResults()
     if (searchString) {
         getParksData(searchString)
             .then(( parks ) => {
@@ -75,7 +74,11 @@ const searchFormParks = () => {
                 parks.forEach(park => {
                     let parkAddress = park.mapped_location.human_address.split("\"")[3]
                     console.log(parkAddress)
+                    let parkName = park.park_name
                     console.log(park.park_name, park.mapped_location.human_address)
+                    let parkEl = createCardContainer(parkName, parkAddress, "park")
+                    console.log("hi", parkEl)
+                    renderCardToDom(parkEl)
                 })
             })
     }
