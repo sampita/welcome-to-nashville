@@ -42,10 +42,9 @@ const clearResults = () => {
 const searchFormEventbrite = () => {
     let searchString = document.querySelector("#meetups-input").value;
 
-
     clearResults()
     // remove line below when done testing
-    console.log(`Eventually will search for "${searchString}"`);
+    // console.log(`Eventually will search for "${searchString}"`);
 
     // prevent empty string search 
     if (searchString) {
@@ -53,10 +52,15 @@ const searchFormEventbrite = () => {
         .then(({events}) => {
             events.forEach(event => {
                 // save 'name' and 'address' to variables for result card creation
-                const name = event.venue.name
-                const address = `${event.venue.address.address_1} ${event.venue.address.address_2}`
-                console.log('name:', name)
-                console.log('address:', address)
+                // console.log("event", event)
+                const name = event.description.text
+                // console.log("description", name)
+                let address = `${event.venue.name}`
+                if (address === "null"){
+                    address = "Address unavailable"
+                }
+                // console.log('name:', name)
+                // console.log('address:', address)
                 // create new search result card
                 const eventEl = createCardContainer(name, address, "meetup")
                 // console.log("eventEl", eventEl)
