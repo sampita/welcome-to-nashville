@@ -9,8 +9,15 @@ const buildSearchForm = () => {
         Search for Things to Do in Nashville
     </h3>
 
-    <input id="parks-input" type="text" placeholder="parks by feature">
-    <button  id="parksSearchButton">Search</button>
+        <select id ="parks-dropdown-box" size="1">
+            <option value="parks by feature" disabled selected hidden>parks by feature</option>
+            <option value="dog_park">Dog Park</option>
+            <option value="hiking_trails">Hiking Trails</option>
+            <option value="playground">Playground</option>
+            <option value="basketball_courts">Basketball Courts</option>
+            <option value="swimming_pool">Swimming Pool</option>
+        </select>
+    <button id="parksSearchButton">Search</button>
     
     <input id="restaurants-input" type="text" placeholder="restaurants by food type">
     <button  id="restaurantsSearchButton">Search</button>
@@ -73,13 +80,16 @@ searchInputField.value = ""
 }
 
 const searchFormParks = () => {
-    let searchString = document.querySelector("#parks-input").value;
+    let dropDownList = document.querySelector("#parks-dropdown-box");
+    let searchString = dropDownList[dropDownList.selectedIndex].value
+    console.log("gtfo", searchString)
     clearResults()
     if (searchString) {
         getParksData(searchString)
-            .then(( parks ) => {
+        .then(( parks ) => {
                 // console.log(parks)
-                parks.forEach(park => {
+                let fiveParks = parks.slice(0,6)
+                fiveParks.forEach(park => {
                     let parkAddress = park.mapped_location.human_address.split("\"")[3]
                     console.log(parkAddress)
                     let parkName = park.park_name
@@ -90,10 +100,10 @@ const searchFormParks = () => {
                 })
             })
     }
-    let searchInputField = document.querySelector("#parks-input")
-
-    searchInputField.value = ""
+    dropDownList.value = dropDownList[0].value
 }
+
+
 
 // Accesses restaurants input and queries Zomato API
 const searchFormZomato = () => {
