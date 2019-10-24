@@ -8,9 +8,7 @@ const renderResultsContainer = () => {
         <h3>Results</h3>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">Cras justo odio</li>
-      <li class="list-group-item">Dapibus ac facilisis in</li>
-      <li class="list-group-item">Vestibulum at eros</li>
+      
     </ul>
   </div>`
     // States variable to query select and eventually appends searchResults innerHTML into  
@@ -38,7 +36,7 @@ const saveCard = () => {
 const renderZomato = (htmlElement) => {
   console.log("Rendering Zomato Results")
   let resultContainer = document.querySelector(".resultsContainer")
-  resultContainer.innerHTML += htmlElement
+  resultContainer.innerHTML = htmlElement
 }
 
 const createZomatoHtml = (restaurants) => {
