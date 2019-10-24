@@ -4,8 +4,8 @@ ticketmasterApiBaseUrl = "https://app.ticketmaster.com/discovery/v2/"
 
 // TODO: write fetch call for ticketmaster API
 const getTicketmasterData = (searchString) => {
-    return fetch(`${ticketmasterApiBaseUrl}events.json?classificationName=${searchString}&dmaId=343&city=nashville&apikey=${ticketmasterApiKey}`)
-        .then(concerts => concerts.json())
+    return fetch(`${ticketmasterApiBaseUrl}events.json?classificationName=${searchString}&dmaId=343&city=nashville&size=6&apikey=${ticketmasterApiKey}`)
+    .then(concerts => concerts.json())
 }
 
 
