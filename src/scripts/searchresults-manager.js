@@ -1,6 +1,6 @@
 // Purpose: This file populates the Results section of the index.html page
 // This function will append search results to DOM.
-const resultsFunction = () => {
+const renderResultsContainer = () => {
     // Creates variable to be called and appended to index element with class of resultsContainer.
     const searchResults = `
     <div class="card" style="width: 18rem;">
@@ -35,6 +35,15 @@ const saveCard = () => {
   addToItinerary(cardToSave, category)
 }
 
+const renderZomato = (htmlElement) => {
+  console.log("Rendering Zomato Results")
+  let resultContainer = document.querySelector(".resultsContainer")
+  resultContainer.innerHTML += htmlElement
+}
+
+const createZomatoHtml = (restaurants) => {
+  return `<p>${restaurants.restaurant.name}</p>`
+}
 // factory function that renders search results to the resultsContainer
 const renderCardToDom = (card) => {
   let cardList = document.querySelector(".list-group")

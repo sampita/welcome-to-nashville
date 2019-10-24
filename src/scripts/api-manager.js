@@ -22,6 +22,13 @@ const getEventbriteData = (searchString) => {
         .then(r => r.json())
 }
 
+
+
+const getZomatoData = (searchString) => {
+    return fetch(`https://developers.zomato.com/api/v2.1/search?entity_id=1138&entity_type=city&q=${searchString}&count=5&apikey=${zomatoApiKey}`)
+    .then(restaurants => restaurants.json())
+
+}
 const getParksData = (searchString) => {
 
     const parksApiBaseUrl = "https://data.nashville.gov/resource/74d7-b74t.json"
