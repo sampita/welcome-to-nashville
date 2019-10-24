@@ -62,6 +62,10 @@ const searchFormEventbrite = () => {
         }
         )
 }
+
+let searchInputField = document.querySelector("#meetups-input")
+
+searchInputField.value = ""
 }
 
 const searchFormParks = () => {
@@ -82,6 +86,9 @@ const searchFormParks = () => {
                 })
             })
     }
+    let searchInputField = document.querySelector("#parks-input")
+
+    searchInputField.value = ""
 }
 
 // Accesses restaurants input and queries Zomato API
@@ -101,6 +108,9 @@ const searchFormZomato = () => {
                 })
             })
     }
+    let searchInputField = document.querySelector("#restaurants-input")
+
+    searchInputField.value = ""    
 }
 
 //grabs the search input and queries the Ticketmaster API
@@ -126,5 +136,9 @@ const searchFormTicketmaster = () => {
             }
             )
     }
+    let searchInputField = document.querySelector("#concerts-input")
+
+    searchInputField.value = ""
+
 }  
 
