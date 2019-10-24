@@ -9,8 +9,8 @@ const buildSearchForm = () => {
         Search for Things to Do in Nashville
     </h3>
         <select id ="parks-dropdown-box" size="1">
-            <option value="" disabled selected hidden>parks by feature</option>
-            <option value="dog_park" id="dog1">Dog Park</option>
+            <option value="parks by feature" disabled selected hidden>parks by feature</option>
+            <option value="dog_park">Dog Park</option>
             <option value="hiking_trails">Hiking Trails</option>
             <option value="playground">Playground</option>
             <option value="basketball_courts">Basketball Courts</option>
@@ -99,10 +99,10 @@ const searchFormParks = () => {
                 })
             })
     }
-    let searchInputField = document.querySelector("#parks-input")
-
-    searchInputField.value = ""
+    dropDownList.value = dropDownList[0].value
 }
+
+
 
 // Accesses restaurants input and queries Zomato API
 const searchFormZomato = () => {
