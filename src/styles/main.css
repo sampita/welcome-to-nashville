@@ -7,6 +7,12 @@
     display: block;
 }
 
+#parks-dropdown-box{
+    margin: 10px;
+    width: 174.5px;
+    padding: 1px; 
+}
+
 input {
     /* display: block; */
     margin: 10px;
