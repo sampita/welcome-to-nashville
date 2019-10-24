@@ -1,6 +1,5 @@
-// Purpose: This file populates the Search section of the index.html page.
 
-//function for search button event listener
+
 
 
 // This function builds the search form and prints it to the DOM
@@ -9,20 +8,15 @@ const buildSearchForm = () => {
     <h3 class="search-header">
         Search for Things to Do in Nashville
     </h3>
-
-    
-        <fieldset>
-            <select id ="parks-dropdown-box">
-                <option value="" disabled selected hidden>parks by feature</option>
-                <option value="dog_park" id="dog1">Dog Park</option>
-                <option value="hiking_trails">Hiking Trails</option>
-                <option value="playground">Playground</option>
-                <option value="basketball_court">Basketball Courts</option>
-                <option value="swimming_pool">Swimming Pool</option>
-            </select>
-            <button id="parksSearchButton">Search</button>
-            </fieldset>
-
+        <select id ="parks-dropdown-box" size="1">
+            <option value="" disabled selected hidden>parks by feature</option>
+            <option value="dog_park" id="dog1">Dog Park</option>
+            <option value="hiking_trails">Hiking Trails</option>
+            <option value="playground">Playground</option>
+            <option value="basketball_courts">Basketball Courts</option>
+            <option value="swimming_pool">Swimming Pool</option>
+        </select>
+    <button id="parksSearchButton">Search</button>
     
     <input id="restaurants-input" type="text" placeholder="restaurants by food type">
     <button id="restaurantsSearchButton">Search</button>
@@ -39,39 +33,80 @@ const buildSearchForm = () => {
 
 }
 
+
+// clear the resultsContainer's previous search results
+const clearResults = () => {
+    let resultsContainer = document.querySelector(".list-group")
+    resultsContainer.innerHTML = ""
+}
+
 // grab event search data and query the API
 const searchFormEventbrite = () => {
     let searchString = document.querySelector("#meetups-input").value;
-    console.log(`Eventually will search for "${searchString}"`); // remove when done testing
+
+
+    clearResults()
+    // remove line below when done testing
+    console.log(`Eventually will search for "${searchString}"`);
+
+    // prevent empty string search 
     if (searchString) {
         getEventbriteData(searchString)
-            .then(({ events }) => {
-                // console.log({events}.events)
-                events.forEach(event => {
-                    // console.log(event.name, event.description);
-                    // console.log(event.start)
-                    // console.log(event.venue.name)
-                    // console.log(event.venue.address) // returns object
-                    const eventEl = createEventbriteHtml(event)
-                    console.log(eventEl)
-                    renderEventbrite(eventEl)
-                })
-            })
-    }
+        .then(({events}) => {
+            events.forEach(event => {
+                // save 'name' and 'address' to variables for result card creation
+                const name = event.venue.name
+                const address = `${event.venue.address.address_1} ${event.venue.address.address_2}`
+                console.log('name:', name)
+                console.log('address:', address)
+                // create new search result card
+                const eventEl = createCardContainer(name, address, "meetup")
+                // console.log("eventEl", eventEl)
+                renderCardToDom(eventEl)
+            }
+            )
+        }
+        )
+}
 }
 
 const searchFormParks = () => {
     let dropDownList = document.querySelector("#parks-dropdown-box");
     let searchString = dropDownList[dropDownList.selectedIndex].value
     console.log("gtfo", searchString)
+    clearResults()
     if (searchString) {
         getParksData(searchString)
         .then(( parks ) => {
                 // console.log(parks)
-                parks.forEach(park => {
+                let fiveParks = parks.slice(0,5)
+                fiveParks.forEach(park => {
                     let parkAddress = park.mapped_location.human_address.split("\"")[3]
                     console.log(parkAddress)
+                    let parkName = park.park_name
                     console.log(park.park_name, park.mapped_location.human_address)
+                    let parkEl = createCardContainer(parkName, parkAddress, "park")
+                    console.log("hi", parkEl)
+                    renderCardToDom(parkEl)
+                })
+            })
+    }
+}
+
+// Accesses restaurants input and queries Zomato API
+const searchFormZomato = () => {
+    const searchString = document.querySelector("#restaurants-input").value;
+    clearResults()
+    if (searchString) {
+        getZomatoData(searchString)
+        //for now this console logs restaurant element
+            .then(( food ) => {
+                // console.log(food.restaurants)
+                food.restaurants.forEach(restaurant => {
+                    const restaurantName = restaurant.restaurant.name
+                    const restaurantAddress = restaurant.restaurant.location.address
+                    const restaurantElement = createCardContainer(restaurantName, restaurantAddress, "restaurant")
+                    renderCardToDom(restaurantElement)
                 })
             })
     }
@@ -80,6 +115,10 @@ const searchFormParks = () => {
 //grabs the search input and queries the Ticketmaster API
 const searchFormTicketmaster = () => {
     const searchString = document.querySelector("#concerts-input").value
+
+    //clears previous results before appending new results to DOM
+    clearResults()
+
     if (searchString) {
         getTicketmasterData(searchString)
             .then(concerts => {
@@ -88,14 +127,13 @@ const searchFormTicketmaster = () => {
                     concerts.name = concert.name
                     concerts.address = concert._embedded.venues[0].address.line1
                     console.log(concerts.name, concerts.address)
+                    //create new search result card
+                    const concertEl = createCardContainer(concerts.name, concerts.address, "concert")
+
+                    renderCardToDom(concertEl)
                 })
             }
             )
     }
 }  
-
-const getZomatoDate = (searchString) => {
-    return fetch(`https://developers.zomato.com/api/v2.1/search?entity_id=1138&entity_type=city&q=${searchKeyWord}&count=100`)
-    .then(restaurants => restaurants.json())
-}
 
