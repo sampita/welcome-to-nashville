@@ -19,7 +19,25 @@ const getEventbriteData = (searchString) => {
     //     }
     // }
     return fetch("https://raw.githubusercontent.com/nss-cohort-36/temp-eb-api/master/search-response.json")
-    .then(r => r.json())
+        .then(r => r.json())
 }
 
-var searchKeyWord = ""
+
+
+const getZomatoData = (searchString) => {
+    return fetch(`https://developers.zomato.com/api/v2.1/search?entity_id=1138&entity_type=city&q=${searchString}&count=5&apikey=${zomatoApiKey}`)
+    .then(restaurants => restaurants.json())
+
+}
+const getParksData = (searchString) => {
+
+    const parksApiBaseUrl = "https://data.nashville.gov/resource/74d7-b74t.json"
+    return fetch(`
+${parksApiBaseUrl}?${searchString}=Yes`, {
+            "headers": {
+                "Accept": "application/json",
+                "X-App-Token": parksApiKey
+            }
+        })
+        .then(response => response.json());
+}

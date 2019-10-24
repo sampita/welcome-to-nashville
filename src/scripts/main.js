@@ -1,11 +1,9 @@
-createItineraryContainer();
-
 renderPageTitle();
 
 buildSearchForm();
 
 attachSearchEvent();
 
-resultsFunction();
+renderResultsContainer();
 
 createItineraryContainer();
