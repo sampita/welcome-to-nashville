@@ -11,3 +11,5 @@ searchFormTicketmaster();
 resultsFunction();
 
 createItineraryContainer();
+
+createSearchForm();

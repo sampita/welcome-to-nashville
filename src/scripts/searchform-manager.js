@@ -10,7 +10,9 @@ const buildSearchForm = () => {
         Search for Things to Do in Nashville
     </h3>
 
-    <input id="parks-input" type="text" placeholder="parks by feature">
+    <form id="parks-input" type="text" placeholder="parks by feature">
+    </form>
+
     <button id="parksSearchButton">Search</button>
     
     <input id="restaurants-input" type="text" placeholder="restaurants by food type">
