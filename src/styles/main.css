@@ -1,0 +1,24 @@
+.jumbotron {
+    background-color: turquoise;
+    text-align: center;
+}
+
+.center {
+    text-align: center;
+}
+
+input {
+    /* display: block; */
+    margin: 10px;
+}
+
+ul {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+li {
+    margin: 10px;
+    min-width: 200px;
+    min-height: 150px;
+}
