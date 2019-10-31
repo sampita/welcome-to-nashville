@@ -14,5 +14,4 @@ const createSearchForm = () => {
       `
       const parkSearchContainerDiv = document.querySelector("#parks-input");
       parkSearchContainerDiv.innerHTML = parkSearchList;
-      console.log("ParkDrop", parkSearchContainerDiv)
     };

@@ -29,13 +29,11 @@ saveCard() {
   // get card Id from event
   let cardId = event.target.id.split("--")[1];
   let category = event.path[1].id.split("--")[0]
-  console.log("card class", category);
   let cardToSave = document.querySelector(`#${category}--${cardId} > #name`).textContent;
   results.addToItinerary(cardToSave, category)
 },
 
 renderZomato(htmlElement) {
-  console.log("Rendering Zomato Results")
   let resultContainer = document.querySelector(".resultsContainer")
   resultContainer.innerHTML = htmlElement
 },
@@ -52,7 +50,6 @@ renderCardToDom(card) {
 // iterate length of current card list and create new id
 getNewIdNumber() {
   let cardArrayLength = document.getElementsByClassName("list-group-item").length;
-  console.log("card array", cardArrayLength);
   return cardArrayLength + 1 // prevent 0-indexed card id list
 },
 
