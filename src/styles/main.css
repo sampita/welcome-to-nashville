@@ -1,0 +1,32 @@
+.jumbotron {
+    /* background-color: turquoise; */
+    text-align: center;
+}
+
+.search-field {
+    display: block;
+}
+
+#parks-dropdown-box{
+    margin: 10px;
+    width: 174.5px;
+    padding: 1px; 
+}
+
+input {
+    /* display: block; */
+    margin: 10px;
+}
+
+/* .list-group {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap
+} */
+
+li {
+    /* flex-wrap: row; */
+    margin: 10px;
+    min-width: 200px;
+    min-height: 150px;
+}
