@@ -87,15 +87,11 @@ searchFormParks() {
     if (searchString) {
         data.getParksData(searchString)
         .then(( parks ) => {
-                // console.log(parks)
                 let fiveParks = parks.slice(0,6)
                 fiveParks.forEach(park => {
                     let parkAddress = park.mapped_location.human_address.split("\"")[3]
-                    console.log(parkAddress)
                     let parkName = park.park_name
-                    console.log(park.park_name, park.mapped_location.human_address)
                     let parkEl = results.createCardContainer(parkName, parkAddress, "park")
-                    console.log("hi", parkEl)
                     results.renderCardToDom(parkEl)
                 })
             })
@@ -140,7 +136,6 @@ searchFormTicketmaster() {
                 concerts._embedded.events.forEach(concert => {
                     concerts.name = concert.name
                     concerts.address = concert._embedded.venues[0].address.line1
-                    console.log(concerts.name, concerts.address)
                     //create new search result card
                     const concertEl = results.createCardContainer(concerts.name, concerts.address, "concert")
 
