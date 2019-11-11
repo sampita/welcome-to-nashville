@@ -5,12 +5,12 @@ const results = {
 renderResultsContainer() {
     // Creates variable to be called and appended to index element with class of resultsContainer.
     const searchResults = `
-    <div class="card" style="width: 18rem;">
+    <div class="card">
     <div class="card-header">
-        <h3>Results</h3>
+        <h3>Search Results</h3>
     </div>
     <ul class="list-group list-group-flush">
-      
+    <p id="noresults">No results found</p>  
     </ul>
   </div>`
     // States variable to query select and eventually appends searchResults innerHTML into  
